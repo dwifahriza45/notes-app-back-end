@@ -7,7 +7,6 @@ class NotesService {
 
   addNote({ title, body, tags }) {
     const id = nanoid(16);
-
     const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
 
@@ -32,11 +31,9 @@ class NotesService {
 
   getNoteById(id) {
     const note = this._notes.filter((n) => n.id === id)[0];
-
     if (!note) {
-      throw new Error('catatan tidak ditemukan');
+      throw new Error('Catatan tidak ditemukan');
     }
-
     return note;
   }
 
@@ -60,12 +57,10 @@ class NotesService {
 
   deleteNoteById(id) {
     const index = this._notes.findIndex((note) => note.id === id);
-
     if (index === -1) {
-      throw new Error('Catatan gagal dihapus');
-
-      this._notes.splice(index, 1);
+      throw new Error('Catatan gagal dihapus. Id tidak ditemukan');
     }
+    this._notes.splice(index, 1);
   }
 }
 
