@@ -61,21 +61,18 @@ class UsersService {
       text: 'SELECT id, password FROM users WHERE username = $1',
       values: [username],
     };
+    const result = await this._pool.query(query);
 
-    const result = this._pool.query(query);
-
-    if (!(await result).rows.lengt) {
+    if (!result.rows.length) {
       throw new AuthenticationError('Kredensial yang Anda berikan salah');
     }
 
     const { id, password: hashedPassword } = result.rows[0];
-
     const match = await bcrypt.compare(password, hashedPassword);
 
     if (!match) {
-      throw new AuthenticationError('Kredensial yang anda berikan salah');
+      throw new AuthenticationError('Kredensial yang Anda berikan salah');
     }
-
     return id;
   }
 }
