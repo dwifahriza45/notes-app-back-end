@@ -3,9 +3,9 @@ const { NotePayloadSchema } = require('./schema');
 
 const NotesValidator = {
   validateNotePayload: (payload) => {
-    const validatinResult = NotePayloadSchema.validate(payload);
-    if (validatinResult.error) {
-      throw new InvariantError(validatinResult.error.message);
+    const validationResult = NotePayloadSchema.validate(payload);
+    if (validationResult.error) {
+      throw new InvariantError(validationResult.error.message);
     }
   },
 };

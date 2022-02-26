@@ -1,6 +1,6 @@
 const ClientError = require('../../exceptions/ClientError');
 
-class AuthenticationsHander {
+class AuthenticationsHandler {
   constructor(authenticationsService, usersService, tokenManager, validator) {
     this._authenticationsService = authenticationsService;
     this._usersService = usersService;
@@ -126,4 +126,4 @@ class AuthenticationsHander {
   }
 }
 
-module.exports = AuthenticationsHander;
+module.exports = AuthenticationsHandler;
